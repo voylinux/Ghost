@@ -26,6 +26,8 @@ languages:
       key: 'zh_TW'
     - name: 'Português'
       key: 'pt-BR'
+    - name: 'Spanish'
+      key: 'es'
 
 port:         4478
 
