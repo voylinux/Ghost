@@ -28,34 +28,34 @@ Hay un par de opciones para simples instaladores ahora mismo:
 
 ### Configuración manual
 
-You're going to need a hosting package that already has, or will allow you to install [Node.js](http://nodejs.org).
-    This means something like a cloud ([Amazon EC2](http://aws.amazon.com/ec2/), [DigitalOcean](http://www.digitalocean.com), [Rackspace Cloud](http://www.rackspace.com/cloud/)), VPS ([Webfaction](https://www.webfaction.com/), [Dreamhost](http://www.dreamhost.com/servers/vps/)) or other package that has SSH (terminal) access & will allow you to install Node.js. There are plenty around and they can be very cheap.
+Vas a necesitar un hosting que ya tenga o te permita instalar, [Node.js](http://nodejs.org).
+    Esto significa algo como ([Amazon EC2](http://aws.amazon.com/ec2/), [DigitalOcean](http://www.digitalocean.com), [Rackspace Cloud](http://www.rackspace.com/cloud/)), VPS ([Webfaction](https://www.webfaction.com/), [Dreamhost](http://www.dreamhost.com/servers/vps/)) o otro paquete que tenga acceso SSH (terminal) y te permita instalar Node.js. Existen varias opciones y algunas baratas.
 
-What won't work at the moment, is cPanel-style shared hosting as this is usually aimed specifically at hosting PHP. Although some offer Ruby, and so may offer Node.js in the future as they are somewhat similar.
+Lo que por ahora no te funcionará, es un hosting compartido al estilo cPanel, puesto que están dirigidos especifícamente a alojar PHP. Aunque algunos ofrecen Ruby y podrían ofrecer Node.js en el futuro puesto que son similares en cierto modo.
 
-<p>Unfortunately, many of the Node-specific cloud hosting solutions such as **Nodejitsu** & **Heroku** are **NOT** compatible with Ghost. They will work at first, but they will delete your files and therefore all image uploads and your database will disappear. Heroku supports MySQL so you could use this, but you will still lose any uploaded images.
+<p>Desafortunadamente, muchas de las soluciones específicas para Node.js como **Nodejitsu** y **Heroku** **NO**  son compatibles con Ghost. Te funcionarán al principio, pero borrarán tus archivos y por tanto todas tus imágnes subidas y tu base de datos desaparecerá. Heroku soporta MySQL así que podrías usarlo, pero aun así perderías cualquier imagen subida.
 
-The following links contain instructions on how to get up and running with:
+Los siguientes enlaces contienen instrucciones sobre cómo ponerlo en funcionamiento con:
 
-*   [Dreamhost](http://www.howtoinstallghost.com/how-to-install-ghost-on-dreamhost/) - from [howtoinstallghost.com](http://howtoinstallghost.com)
-*   [DigitalOcean](http://ghosted.co/install-ghost-digitalocean/) - from [Corbett Barr](http://ghosted.co)
-*   [Webfaction](http://www.howtoinstallghost.com/how-to-install-ghost-on-webfaction-hosting/) - from [howtoinstallghost.com](http://howtoinstallghost.com)
-*   [Rackspace](http://ghost.pellegrom.me/installing-ghost-on-ubuntu/) (Ubuntu 13.04 + linux service) - from [Gilbert Pellegrom](http://ghost.pellegrom.me/)
-*   [Ubuntu + nginx + forever](http://0v.org/installing-ghost-on-ubuntu-nginx-and-mysql/) - from [Gregg Housh](http://0v.org/)
-*   ...check the [installation forum](https://en.ghost.org/forum/installation) for more guides ...
+*   [Dreamhost](http://www.howtoinstallghost.com/how-to-install-ghost-on-dreamhost/) - desde [howtoinstallghost.com](http://howtoinstallghost.com)
+*   [DigitalOcean](http://ghosted.co/install-ghost-digitalocean/) - desde [Corbett Barr](http://ghosted.co)
+*   [Webfaction](http://www.howtoinstallghost.com/how-to-install-ghost-on-webfaction-hosting/) - desde [howtoinstallghost.com](http://howtoinstallghost.com)
+*   [Rackspace](http://ghost.pellegrom.me/installing-ghost-on-ubuntu/) (Ubuntu 13.04 + linux service) - desde [Gilbert Pellegrom](http://ghost.pellegrom.me/)
+*   [Ubuntu + nginx + forever](http://0v.org/installing-ghost-on-ubuntu-nginx-and-mysql/) - desde [Gregg Housh](http://0v.org/)
+*   ...comprueba el  [foro de instalación](https://en.ghost.org/forum/installation) para más guías...
 
-## Making Ghost run forever
+## Haciendo que Ghost corra para siempre
 
-The previously described method to start Ghost is `npm start`. This is a good way to do local develpment and tests, but if you start Ghost using the command line it will stop whenever you are closing the terminal window or log out from SSH. To prevent Ghost from stopping you have to run Ghost as a service. There are two ways to accomplish this.
+Lo anterior describ el método para arrancar Ghost con `npm start`. Esto es una buena manera de hacer un desarrollo y pruebas en local, pero si arrancas Ghost usando la linea de comandos se parará cuando cierres la termnial o salgas de la conexión SSH. Para evitar que Ghost se pare, ejecútalo como un servicio. Hay dos maneras de hacer esto.
 
 ### Forever ([https://npmjs.org/package/forever](https://npmjs.org/package/forever)) <a id="forever"></a>
 
-You can use `forever` to run Ghost as a background task. `forever` will also take care of your Ghost installation and it will restart the node process if it crashes.
+Puedes usar `forever` para arrancar Ghost como una tarea en segundo planeo. `forever` también se encargará de tu instalación de Ghost y la reiniciará si el proceso se rompe.
 
-*   To install `forever` type `npm install forever -g`
-*   To start Ghost using `forever` from the Ghost installation directory type `NODE_ENV=production forever start index.js`
-*   To stop Ghost type `forever stop index.js`
-*   To check if Ghost is currently running type `forever list`
+*   Para instalar `forever` escribe `npm install forever -g`
+*   Para arrancar Ghost usando `forever` desde el directorio de instalación escribe `NODE_ENV=production forever start index.js`
+*   Para parar Ghost, escribe `forever stop index.js`
+*   Para comprobar si Ghost está corriento, escribe `forever list`
 
 ### Supervisor ([http://supervisord.org/](http://supervisord.org/)) <a id="supervisor"></a>
 
